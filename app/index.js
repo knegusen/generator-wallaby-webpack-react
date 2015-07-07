@@ -21,6 +21,7 @@ module.exports = generators.NamedBase.extend({
         this._createWallabyJS();
         this._createWebpackConfig();
         this._createReadme();
+        this._createGitignore();
     },
 
     reactRelatedFiles: function () {
@@ -33,6 +34,10 @@ module.exports = generators.NamedBase.extend({
 
     _createReadme: function () {
         this._copyToRoot('readme.md');
+    },
+
+    _createGitignore: function () {
+        this._copyToRoot('.gitignore');
     },
 
     _copyPhantomJSShims: function (fileName) {

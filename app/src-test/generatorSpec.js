@@ -109,4 +109,19 @@ describe("generator", function () {
             assert.file(_pathWithRoot('readme.md'));
         });
     });
+
+    describe("gitignore", function () {
+        it("creates .gitignore file", function () {
+            assert.file(_pathWithRoot('.gitignore'));
+        });
+
+        it("contains correct igonre files", function () {
+            var ignoreFile = _pathWithRoot('.gitignore');
+            assert.fileContent([
+                [ignoreFile, /node_modules/],
+                [ignoreFile, /dist/],
+                [ignoreFile, /.idea/]
+            ]);
+        });
+    });
 });
