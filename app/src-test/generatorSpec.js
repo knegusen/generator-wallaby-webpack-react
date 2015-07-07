@@ -45,6 +45,18 @@ describe("generator", function () {
         it("updates package.json with package name", function () {
             assert.fileContent(_pathWithRoot('package.json'), /['|"]*name['|"]*[ ]*:[ ]*['|"]repo-root['|"]/);
         });
+
+        it("contains correct dependencies", function () {
+            var packageJSonFile = _pathWithRoot('package.json');
+            assert.fileContent([
+                [packageJSonFile, /babel/],
+                [packageJSonFile, /babel-core/],
+                [packageJSonFile, /babel-loader/],
+                [packageJSonFile, /wallaby-webpack/],
+                [packageJSonFile, /wallaby/],
+                [packageJSonFile, /react/]
+            ]);
+        })
     });
 
     describe("wallaby.js", function () {
