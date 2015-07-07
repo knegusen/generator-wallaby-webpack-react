@@ -32,4 +32,14 @@ describe("generator", function () {
             assert.file(path.join(repoRoot, 'src-test'));
         });
     });
+
+    describe("package.json", function () {
+        it("creates package.json", function () {
+            assert.file(path.join(repoRoot, 'package.json'));
+        });
+
+        it("updates package.json with package name", function () {
+            assert.fileContent(path.join(repoRoot, 'package.json'), /['|"]*name['|"]*[ ]*:[ ]*['|"]repo-root['|"]/);
+        });
+    });
 });

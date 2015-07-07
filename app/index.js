@@ -2,6 +2,7 @@
 
 var generators = require('yeoman-generator');
 var chalk = require('chalk');
+var path = require('path');
 
 module.exports = generators.NamedBase.extend({
 
@@ -10,6 +11,10 @@ module.exports = generators.NamedBase.extend({
         this.mkdir(_name);
         this._createSrcFolder(_name);
         this._createSrcTestFolder(_name);
+    },
+
+    copyFiles: function (name) {
+        this.template('package.json', path.join(this.arguments[0], 'package.json'), {packageName: this.arguments[0]});
     },
 
     _createSrcFolder: function (name) {
