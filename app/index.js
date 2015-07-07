@@ -16,10 +16,19 @@ module.exports = generators.NamedBase.extend({
     copyFiles: function () {
         this._createPackageJson();
         this._createWallabyJS();
+        this._createWebpackConfig();
+    },
+
+    _createWebpackConfig: function () {
+        this._copyToRoot('webpack.config.js');
     },
 
     _createWallabyJS: function () {
-        this.copy('wallaby.js', path.join(this.arguments[0], 'wallaby.js'));
+        this._copyToRoot('wallaby.js');
+    },
+
+    _copyToRoot: function (fileName) {
+        this.copy(fileName, path.join(this.arguments[0], fileName));
     },
 
     _createPackageJson: function () {

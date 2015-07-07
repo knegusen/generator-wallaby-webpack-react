@@ -52,6 +52,14 @@ describe("generator", function () {
             assert.file(_pathWithRoot('wallaby.js'));
         });
 
-        //TODO: Add tests about wallaby.js file
+        //TODO: Add tests for wallaby.js file
     });
+
+    describe("webpack.config", function () {
+        it("creates webpack.config", function () {
+            assert.file(_pathWithRoot('webpack.config.js'));
+        });
+
+        //TODO: Add test for webpack.config.js
+    })
 });
