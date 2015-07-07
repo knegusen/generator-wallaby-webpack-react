@@ -64,6 +64,11 @@ describe("generator", function () {
     });
 
     describe("react examples", function () {
+
+        it("create phantomjs-shims", function () {
+            assert.file(_pathWithRoot('src-test/phantomjs-shims.js'));
+        });
+
         it("creates index.html file", function () {
             assert.file(_pathWithRoot('index.html'));
             //TODO: Describe index.html?

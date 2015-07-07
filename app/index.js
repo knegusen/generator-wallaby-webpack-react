@@ -23,10 +23,16 @@ module.exports = generators.NamedBase.extend({
     },
 
     reactRelatedFiles: function () {
+        this._copyPhantomJSShims('phantomjs-shims.js');
         this._copyToRoot('index.html');
         this._copyReactFile('Main.jsx');
         this._copyReactFile('ExampleComponent.jsx');
         this._copyReactTestFile('ExampleComponentSpec.jsx');
+    },
+
+    _copyPhantomJSShims: function (fileName) {
+        var file = path.join("src-test", fileName);
+        this.copy(file, this._getPathWithRoot(file));
     },
 
     _copyReactFile: function (fileName) {
