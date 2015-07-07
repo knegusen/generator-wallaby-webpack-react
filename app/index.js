@@ -8,6 +8,16 @@ module.exports = generators.NamedBase.extend({
     directoryCreation: function () {
         var _name = this.arguments[0]; // retrieve the name argument
         this.mkdir(_name);
+        this._createSrcFolder(_name);
+        this._createSrcTestFolder(_name);
+    },
+
+    _createSrcFolder: function (name) {
+        this.mkdir(name + "/src")
+    },
+
+    _createSrcTestFolder: function (name) {
+        this.mkdir(name + "/src-test")
     }
 
 //    constructor : function(){
