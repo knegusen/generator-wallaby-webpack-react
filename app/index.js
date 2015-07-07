@@ -13,7 +13,16 @@ module.exports = generators.NamedBase.extend({
         this._createSrcTestFolder(_name);
     },
 
-    copyFiles: function (name) {
+    copyFiles: function () {
+        this._createPackageJson();
+        this._createWallabyJS();
+    },
+
+    _createWallabyJS: function () {
+        this.copy('wallaby.js', path.join(this.arguments[0], 'wallaby.js'));
+    },
+
+    _createPackageJson: function () {
         this.template('package.json', path.join(this.arguments[0], 'package.json'), {packageName: this.arguments[0]});
     },
 

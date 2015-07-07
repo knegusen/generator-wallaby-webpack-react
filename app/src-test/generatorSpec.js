@@ -16,6 +16,10 @@ describe("generator", function () {
             .on('end', done); // when the 'end' event fires, run the done method
     });
 
+    function _pathWithRoot(rest) {
+        return path.join(repoRoot, rest);
+    }
+
     describe("directory creation", function () {
 
         it('should generate a root directory', function () {
@@ -25,21 +29,29 @@ describe("generator", function () {
         });
 
         it("should generate src folder", function () {
-            assert.file(path.join(repoRoot, 'src'));
+            assert.file(_pathWithRoot('src'));
         });
 
         it("should generate src-test folder", function () {
-            assert.file(path.join(repoRoot, 'src-test'));
+            assert.file(_pathWithRoot('src-test'));
         });
     });
 
     describe("package.json", function () {
         it("creates package.json", function () {
-            assert.file(path.join(repoRoot, 'package.json'));
+            assert.file(_pathWithRoot('package.json'));
         });
 
         it("updates package.json with package name", function () {
-            assert.fileContent(path.join(repoRoot, 'package.json'), /['|"]*name['|"]*[ ]*:[ ]*['|"]repo-root['|"]/);
+            assert.fileContent(_pathWithRoot('package.json'), /['|"]*name['|"]*[ ]*:[ ]*['|"]repo-root['|"]/);
         });
+    });
+
+    describe("wallaby.js", function () {
+        it("creates wallaby.js", function () {
+            assert.file(_pathWithRoot('wallaby.js'));
+        });
+
+        //TODO: Add tests about wallaby.js file
     });
 });
