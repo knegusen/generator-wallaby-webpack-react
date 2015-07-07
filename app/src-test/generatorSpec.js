@@ -3,14 +3,14 @@ describe("generator", function () {
     var yeoman = require('yeoman-generator'); // a reference to the generator module
     var path = require('path'); // reference to the built in path module
     var assert; // will become the Yeoman assert object
-    var mockGen;
+    var helpers;
     var repoRoot = 'repo-root';
 
     before(function (done) {
         assert = yeoman.assert; // create the yeoman assert object
-        mockGen = yeoman.test; // create the yeoman test generator
+        helpers = yeoman.test; // create the yeoman test generator
         // run the mock generator with some options
-        mockGen.run(path.join(__dirname, '../../app')) // run the generator from the app directory
+        helpers.run(path.join(__dirname, '../../app')) // run the generator from the app directory
             .inDir(path.join(__dirname, './tmp')) // generate the generator files in the tmp directory
             .withArguments([repoRoot])
             .on('end', done); // when the 'end' event fires, run the done method
@@ -102,5 +102,11 @@ describe("generator", function () {
 
             //TODO: Describe ExampleComponent.jsx and ExampleComponentSpec.jsx?
         });
-    })
+    });
+
+    describe("readme", function () {
+        it("creates readme.md file", function () {
+            assert.file(_pathWithRoot('readme.md'));
+        });
+    });
 });

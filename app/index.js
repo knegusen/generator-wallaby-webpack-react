@@ -20,6 +20,7 @@ module.exports = generators.NamedBase.extend({
         this._createPackageJson();
         this._createWallabyJS();
         this._createWebpackConfig();
+        this._createReadme();
     },
 
     reactRelatedFiles: function () {
@@ -28,6 +29,10 @@ module.exports = generators.NamedBase.extend({
         this._copyReactFile('Main.jsx');
         this._copyReactFile('ExampleComponent.jsx');
         this._copyReactTestFile('ExampleComponentSpec.jsx');
+    },
+
+    _createReadme: function () {
+        this._copyToRoot('readme.md');
     },
 
     _copyPhantomJSShims: function (fileName) {
@@ -72,13 +77,4 @@ module.exports = generators.NamedBase.extend({
     _getPathWithRoot: function (src) {
         return path.join(this.arguments[0], src);
     }
-
-//
-//    runNpm: function(){
-//        var done = this.async();
-//        this.npmInstall("", function(){
-//            console.log("\nEverything Setup !!!\n");
-//            done();
-//        });
-//    }
 });
