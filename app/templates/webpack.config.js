@@ -2,7 +2,7 @@ var path = require('path');
 
 module.exports = {
     entry: {
-        index: './src/react/Index.jsx'
+        index: './src/react/Main.jsx'
     },
     output: {
         path: __dirname + "/dist",
@@ -14,10 +14,6 @@ module.exports = {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader'
-            },
-            {
-                test: /\.*css$/,
-                loader: "style!css"
             }
         ]
     },

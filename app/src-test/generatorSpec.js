@@ -61,5 +61,29 @@ describe("generator", function () {
         });
 
         //TODO: Add test for webpack.config.js
+    });
+
+    describe("react examples", function () {
+        it("creates index.html file", function () {
+            assert.file(_pathWithRoot('index.html'));
+            //TODO: Describe index.html?
+        });
+
+        it("creates main.jsx file", function () {
+            assert.file(_pathWithRoot('src/react/Main.jsx'));
+            //TODO: Describe main.jsx?
+        });
+
+        describe("example component file", function () {
+            it("creates ExampleComponent.jsx file", function () {
+                assert.file(_pathWithRoot('src/react/ExampleComponent.jsx'));
+            });
+
+            it("creates ExampleComponentSpec.jsx file", function () {
+                assert.file(_pathWithRoot('src-test/react/ExampleComponentSpec.jsx'));
+            });
+
+            //TODO: Describe ExampleComponent.jsx and ExampleComponentSpec.jsx?
+        });
     })
 });

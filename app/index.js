@@ -4,6 +4,9 @@ var generators = require('yeoman-generator');
 var chalk = require('chalk');
 var path = require('path');
 
+var REACT_FOLDER = "src/react";
+var REACT_TEST_FOLDER = "src-test/react";
+
 module.exports = generators.NamedBase.extend({
 
     directoryCreation: function () {
@@ -19,6 +22,23 @@ module.exports = generators.NamedBase.extend({
         this._createWebpackConfig();
     },
 
+    reactRelatedFiles: function () {
+        this._copyToRoot('index.html');
+        this._copyReactFile('Main.jsx');
+        this._copyReactFile('ExampleComponent.jsx');
+        this._copyReactTestFile('ExampleComponentSpec.jsx');
+    },
+
+    _copyReactFile: function (fileName) {
+        var file = path.join(REACT_FOLDER, fileName);
+        this.copy(file, this._getPathWithRoot(file));
+    },
+
+    _copyReactTestFile: function (fileName) {
+        var file = path.join(REACT_TEST_FOLDER, fileName);
+        this.copy(file, this._getPathWithRoot(file));
+    },
+
     _createWebpackConfig: function () {
         this._copyToRoot('webpack.config.js');
     },
@@ -28,11 +48,11 @@ module.exports = generators.NamedBase.extend({
     },
 
     _copyToRoot: function (fileName) {
-        this.copy(fileName, path.join(this.arguments[0], fileName));
+        this.copy(fileName, this._getPathWithRoot(fileName));
     },
 
     _createPackageJson: function () {
-        this.template('package.json', path.join(this.arguments[0], 'package.json'), {packageName: this.arguments[0]});
+        this.template('package.json', this._getPathWithRoot('package.json'), {packageName: this.arguments[0]});
     },
 
     _createSrcFolder: function (name) {
@@ -41,21 +61,12 @@ module.exports = generators.NamedBase.extend({
 
     _createSrcTestFolder: function (name) {
         this.mkdir(name + "/src-test")
+    },
+
+    _getPathWithRoot: function (src) {
+        return path.join(this.arguments[0], src);
     }
 
-//    constructor : function(){
-//        generators.Base.apply(this, arguments);
-//    },
-//    scaffoldFolders: function(){
-//        this.mkdir("src");
-//        this.mkdir("src-test");
-//    },
-//
-//    copyMainFiles: function(){
-//        this.copy("src-test/phantomjs-shim.js", "src/phantomjs-shim.js");
-//        this.copy("src/BowlingGame.js", "src/BowlingGame.js");
-//        this.copy("src-test/BowlingGameSpec.js", "src/BowlingGameSpec.js");
-//    },
 //
 //    runNpm: function(){
 //        var done = this.async();
