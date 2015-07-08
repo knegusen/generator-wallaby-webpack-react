@@ -3,11 +3,25 @@
 var generators = require('yeoman-generator');
 var chalk = require('chalk');
 var path = require('path');
+var exec = require('child_process').exec;
 
 var REACT_FOLDER = "src/react";
 var REACT_TEST_FOLDER = "src-test/react";
 
 module.exports = generators.Base.extend({
+
+    prompting: function () {
+        var done = this.async();
+        this.prompt({
+            type: 'input',
+            name: 'useGit',
+            message: 'Do you want to initialize git repo? (y/n)',
+            default: 'y'
+        }, function (answers) {
+            this.answers = answers;
+            done();
+        }.bind(this));
+    },
 
     directoryCreation: function () {
         this._createSrcFolder();
@@ -21,7 +35,6 @@ module.exports = generators.Base.extend({
         this._createReadme();
         this._createGitignore();
     },
-
     reactRelatedFiles: function () {
         this._copyPhantomJSShims();
         this._copyToRoot('index.html');
@@ -30,12 +43,14 @@ module.exports = generators.Base.extend({
         this._copyReactTestFile('ExampleComponentSpec.jsx');
     },
 
-    installDependencies: function () {
-        if (this.options.skipInstall) {
-            this.log('You need to manually run ' + chalk.yellow.bold('npm install'));
-        } else {
-            this.npmInstall([''], {});
+    install: function () {
+        if (!this.options.skipInstall) {
+            this.npmInstall();
         }
+    },
+
+    end: function () {
+        this._createGitRepo();
     },
 
     _createReadme: function () {
@@ -83,5 +98,37 @@ module.exports = generators.Base.extend({
 
     _createSrcTestFolder: function (name) {
         this.mkdir("src-test");
+    },
+
+    _createGitRepo: function () {
+        if (this.answers.useGit == 'y') {
+            var done = this.async();
+            var async = require('async');
+            this.log('\n\nInitializing Git repository. If this fail, try running ' +
+                chalk.yellow.bold('git init') +
+                ' and make a first commit manually');
+            async.series([
+                function (taskDone) {
+                    exec('git init', taskDone);
+                },
+                function (taskDone) {
+                    exec('git add . --all', taskDone);
+                },
+                function (taskDone) {
+                    exec('git commit -m "Initial commit"', taskDone);
+                }
+            ], function (err) {
+
+                if (err === 127) {
+                    this.log('Could not find the ' + chalk.yellow.bold('git') + ' command. Make sure Git is installed on this machine');
+                    return;
+                }
+
+                this.log(chalk.green('complete') + ' Git repository has been setup');
+                done();
+            }.bind(this));
+        } else {
+
+        }
     }
 });

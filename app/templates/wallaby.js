@@ -18,8 +18,7 @@ module.exports = function (wallaby) {
             {pattern: 'src-test/phantomjs-shims.js', instrument: false},
             //{pattern: 'node_modules/react/react.js', instrument: false},
 
-            {pattern: 'src/**/*.js*', load: false},
-            {pattern: 'styles/**/*.*css', load: false}
+            {pattern: 'src/**/*.js*', load: false}
         ],
 
         tests: [

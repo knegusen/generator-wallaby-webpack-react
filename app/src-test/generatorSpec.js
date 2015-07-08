@@ -9,9 +9,15 @@ describe("generator", function () {
         assert = yeoman.assert; // create the yeoman assert object
         helpers = yeoman.test; // create the yeoman test generator
         // run the mock generator with some options
+
+        var mockPrompt = {
+            useGit: 'n'
+        };
+
         helpers.run(path.join(__dirname, '../../app')) // run the generator from the app directory
             .inDir(path.join(__dirname, './tmp')) // generate the generator files in the tmp directory
-            .withOptions({skipInstall: true})
+            .withOptions({skipInstall: true, createGitRepo: false})
+            .withPrompts(mockPrompt)
             .on('end', done); // when the 'end' event fires, run the done method
     });
 
@@ -103,12 +109,15 @@ describe("generator", function () {
         });
     });
 
-    describe("gitignore", function () {
+    describe("git", function () {
+        it('initialises a Git repository', function () {
+            //TODO: Test that git repo is initialized
+        });
         it("creates .gitignore file", function () {
             assert.file('.gitignore');
         });
 
-        it("contains correct igonre files", function () {
+        it("gitignore ignores correct files", function () {
             var ignoreFile = '.gitignore';
             assert.fileContent([
                 [ignoreFile, /node_modules/],
