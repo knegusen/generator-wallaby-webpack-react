@@ -10,10 +10,10 @@ Install generator:
 
 ```$ npm install -g generator-wallaby-webpack-react```
 
-Make a new director, and cd into it
+Make a new director, and cd into it:
 
 ```$ mkdir name-of-your-app && cd $_```
 
-Run yo wallaby-webpack-react
+Run yo wallaby-webpack-react:
 
 ```$ yo wallaby-webpack-react```

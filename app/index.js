@@ -43,7 +43,7 @@ module.exports = generators.Base.extend({
     },
 
     _createGitignore: function () {
-        this._copyToRoot('.gitignore');
+        this.copy('gitignore', '.gitignore');
     },
 
     _copyPhantomJSShims: function () {
