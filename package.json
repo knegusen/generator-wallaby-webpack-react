@@ -39,9 +39,5 @@
     "grunt-mocha-test": "^0.12.7",
     "mocha": "^2.2.5"
   },
-  "licenses": [
-    {
-      "type": "MIT"
-    }
-  ]
+  "licenses": "MIT"
 }
