@@ -32,4 +32,4 @@ Then add new configuration by clicking ```+```, name it Wallaby, and browse for 
 
 ### Other Ideas
 
-Please check [wallaby.js](https://www.wallabyjs.com) for more information how to configure for other ideas.
+Please check [wallaby.js](http://www.wallabyjs.com) for more information how to configure for other ideas.
