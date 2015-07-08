@@ -4,7 +4,7 @@
 
 Install required tools:
 
-```$ npm install -g yo grunt```
+```$ npm install -g yo```
 
 Install generator:
 
