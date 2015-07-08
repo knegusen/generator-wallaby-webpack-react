@@ -14,6 +14,6 @@ Make a new director, and cd into it
 
 ```$ mkdir name-of-your-app && cd $_```
 
-Run yo generator-wallaby-webpack-react
+Run yo wallaby-webpack-react
 
-```$ yo generator-wallaby-webpack-react```
+```$ yo wallaby-webpack-react```
