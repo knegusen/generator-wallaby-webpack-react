@@ -13,12 +13,17 @@ describe("generator", function () {
         helpers.run(path.join(__dirname, '../../app')) // run the generator from the app directory
             .inDir(path.join(__dirname, './tmp')) // generate the generator files in the tmp directory
             .withArguments([repoRoot])
+            .withOptions({skipInstall: true})
             .on('end', done); // when the 'end' event fires, run the done method
     });
 
     function _pathWithRoot(rest) {
         return path.join(repoRoot, rest);
     }
+
+    descrbie("installing dependencies", function () {
+        //TODO: Test npm install with and without skipInstall argument
+    });
 
     describe("directory creation", function () {
 
@@ -56,7 +61,7 @@ describe("generator", function () {
                 [packageJSonFile, /wallaby/],
                 [packageJSonFile, /react/]
             ]);
-        })
+        });
     });
 
     describe("wallaby.js", function () {

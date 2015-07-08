@@ -32,6 +32,14 @@ module.exports = generators.NamedBase.extend({
         this._copyReactTestFile('ExampleComponentSpec.jsx');
     },
 
+    installDependencies: function () {
+        if (this.options.skipInstall) {
+            this.log('You need to manually run ' + chalk.yellow.bold('npm install'));
+        } else {
+            this.npmInstall([''], {});
+        }
+    },
+
     _createReadme: function () {
         this._copyToRoot('readme.md');
     },
@@ -72,11 +80,11 @@ module.exports = generators.NamedBase.extend({
     },
 
     _createSrcFolder: function (name) {
-        this.mkdir(name + "/src")
+        this.mkdir(name + "/src");
     },
 
     _createSrcTestFolder: function (name) {
-        this.mkdir(name + "/src-test")
+        this.mkdir(name + "/src-test");
     },
 
     _getPathWithRoot: function (src) {
