@@ -7,13 +7,11 @@ var path = require('path');
 var REACT_FOLDER = "src/react";
 var REACT_TEST_FOLDER = "src-test/react";
 
-module.exports = generators.NamedBase.extend({
+module.exports = generators.Base.extend({
 
     directoryCreation: function () {
-        var _name = this.arguments[0]; // retrieve the name argument
-        this.mkdir(_name);
-        this._createSrcFolder(_name);
-        this._createSrcTestFolder(_name);
+        this._createSrcFolder();
+        this._createSrcTestFolder();
     },
 
     copyFiles: function () {
@@ -25,7 +23,7 @@ module.exports = generators.NamedBase.extend({
     },
 
     reactRelatedFiles: function () {
-        this._copyPhantomJSShims('phantomjs-shims.js');
+        this._copyPhantomJSShims();
         this._copyToRoot('index.html');
         this._copyReactFile('Main.jsx');
         this._copyReactFile('ExampleComponent.jsx');
@@ -48,19 +46,19 @@ module.exports = generators.NamedBase.extend({
         this._copyToRoot('.gitignore');
     },
 
-    _copyPhantomJSShims: function (fileName) {
-        var file = path.join("src-test", fileName);
-        this.copy(file, this._getPathWithRoot(file));
+    _copyPhantomJSShims: function () {
+        var file = path.join("src-test", 'phantomjs-shims.js');
+        this.copy(file, file);
     },
 
     _copyReactFile: function (fileName) {
         var file = path.join(REACT_FOLDER, fileName);
-        this.copy(file, this._getPathWithRoot(file));
+        this.copy(file, file);
     },
 
     _copyReactTestFile: function (fileName) {
         var file = path.join(REACT_TEST_FOLDER, fileName);
-        this.copy(file, this._getPathWithRoot(file));
+        this.copy(file, file);
     },
 
     _createWebpackConfig: function () {
@@ -72,22 +70,18 @@ module.exports = generators.NamedBase.extend({
     },
 
     _copyToRoot: function (fileName) {
-        this.copy(fileName, this._getPathWithRoot(fileName));
+        this.copy(fileName, fileName);
     },
 
     _createPackageJson: function () {
-        this.template('package.json', this._getPathWithRoot('package.json'), {packageName: this.arguments[0]});
+        this.template('package.json', 'package.json', {packageName: "package"});
     },
 
-    _createSrcFolder: function (name) {
-        this.mkdir(name + "/src");
+    _createSrcFolder: function () {
+        this.mkdir("src");
     },
 
     _createSrcTestFolder: function (name) {
-        this.mkdir(name + "/src-test");
-    },
-
-    _getPathWithRoot: function (src) {
-        return path.join(this.arguments[0], src);
+        this.mkdir("/src-test");
     }
 });

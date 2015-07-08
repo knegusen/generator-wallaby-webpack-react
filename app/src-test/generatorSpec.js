@@ -4,7 +4,6 @@ describe("generator", function () {
     var path = require('path'); // reference to the built in path module
     var assert; // will become the Yeoman assert object
     var helpers;
-    var repoRoot = 'repo-root';
 
     before(function (done) {
         assert = yeoman.assert; // create the yeoman assert object
@@ -12,47 +11,36 @@ describe("generator", function () {
         // run the mock generator with some options
         helpers.run(path.join(__dirname, '../../app')) // run the generator from the app directory
             .inDir(path.join(__dirname, './tmp')) // generate the generator files in the tmp directory
-            .withArguments([repoRoot])
             .withOptions({skipInstall: true})
             .on('end', done); // when the 'end' event fires, run the done method
     });
 
-    function _pathWithRoot(rest) {
-        return path.join(repoRoot, rest);
-    }
-
-    descrbie("installing dependencies", function () {
+    describe("installing dependencies", function () {
         //TODO: Test npm install with and without skipInstall argument
     });
 
     describe("directory creation", function () {
 
-        it('should generate a root directory', function () {
-            // since we can not assert if a directory exists,
-            // we use the file() method and provide a path to the directory itself
-            assert.file(repoRoot);
-        });
-
         it("should generate src folder", function () {
-            assert.file(_pathWithRoot('src'));
+            assert.file('src');
         });
 
         it("should generate src-test folder", function () {
-            assert.file(_pathWithRoot('src-test'));
+            assert.file('src-test');
         });
     });
 
     describe("package.json", function () {
         it("creates package.json", function () {
-            assert.file(_pathWithRoot('package.json'));
+            assert.file('package.json');
         });
 
         it("updates package.json with package name", function () {
-            assert.fileContent(_pathWithRoot('package.json'), /['|"]*name['|"]*[ ]*:[ ]*['|"]repo-root['|"]/);
+            assert.fileContent('package.json', /['|"]*name['|"]*[ ]*:[ ]*['|"]package['|"]/);
         });
 
         it("contains correct dependencies", function () {
-            var packageJSonFile = _pathWithRoot('package.json');
+            var packageJSonFile = 'package.json';
             assert.fileContent([
                 [packageJSonFile, /babel/],
                 [packageJSonFile, /babel-core/],
@@ -66,7 +54,7 @@ describe("generator", function () {
 
     describe("wallaby.js", function () {
         it("creates wallaby.js", function () {
-            assert.file(_pathWithRoot('wallaby.js'));
+            assert.file('wallaby.js');
         });
 
         //TODO: Add tests for wallaby.js file
@@ -74,7 +62,7 @@ describe("generator", function () {
 
     describe("webpack.config", function () {
         it("creates webpack.config", function () {
-            assert.file(_pathWithRoot('webpack.config.js'));
+            assert.file('webpack.config.js');
         });
 
         //TODO: Add test for webpack.config.js
@@ -83,26 +71,26 @@ describe("generator", function () {
     describe("react examples", function () {
 
         it("create phantomjs-shims", function () {
-            assert.file(_pathWithRoot('src-test/phantomjs-shims.js'));
+            assert.file('src-test/phantomjs-shims.js');
         });
 
         it("creates index.html file", function () {
-            assert.file(_pathWithRoot('index.html'));
+            assert.file('index.html');
             //TODO: Describe index.html?
         });
 
         it("creates main.jsx file", function () {
-            assert.file(_pathWithRoot('src/react/Main.jsx'));
+            assert.file('src/react/Main.jsx');
             //TODO: Describe main.jsx?
         });
 
         describe("example component file", function () {
             it("creates ExampleComponent.jsx file", function () {
-                assert.file(_pathWithRoot('src/react/ExampleComponent.jsx'));
+                assert.file('src/react/ExampleComponent.jsx');
             });
 
             it("creates ExampleComponentSpec.jsx file", function () {
-                assert.file(_pathWithRoot('src-test/react/ExampleComponentSpec.jsx'));
+                assert.file('src-test/react/ExampleComponentSpec.jsx');
             });
 
             //TODO: Describe ExampleComponent.jsx and ExampleComponentSpec.jsx?
@@ -111,17 +99,17 @@ describe("generator", function () {
 
     describe("readme", function () {
         it("creates readme.md file", function () {
-            assert.file(_pathWithRoot('readme.md'));
+            assert.file('readme.md');
         });
     });
 
     describe("gitignore", function () {
         it("creates .gitignore file", function () {
-            assert.file(_pathWithRoot('.gitignore'));
+            assert.file('.gitignore');
         });
 
         it("contains correct igonre files", function () {
-            var ignoreFile = _pathWithRoot('.gitignore');
+            var ignoreFile = '.gitignore';
             assert.fileContent([
                 [ignoreFile, /node_modules/],
                 [ignoreFile, /dist/],
