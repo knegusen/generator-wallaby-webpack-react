@@ -82,6 +82,6 @@ module.exports = generators.Base.extend({
     },
 
     _createSrcTestFolder: function (name) {
-        this.mkdir("/src-test");
+        this.mkdir("src-test");
     }
 });
