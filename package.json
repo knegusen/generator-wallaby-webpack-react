@@ -1,12 +1,17 @@
 {
   "name": "generator-wallaby-webpack-react",
   "version": "0.1.0",
-  "description": "React with webpack and wallaby!",
+  "description": "Yeoman generator for wallabyjs, webpack, react and babel.",
   "files": [
     "app"
   ],
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "wallabyjs",
+    "webpack",
+    "react",
+    "babel",
+    "es6"
   ],
   "dependencies": {
     "chalk": "^1.1.0",
