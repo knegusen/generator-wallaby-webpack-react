@@ -5,6 +5,18 @@
   "files": [
     "app"
   ],
+  "homepage": "https://bitbucket.org/knegusen/generator-wallaby-webpack-react",
+  "bugs": "https://bitbucket.org/knegusen/generator-wallaby-webpack-react/issues",
+  "author": {
+    "name": "Dennis Axelsson",
+    "email": "",
+    "url": "https://bitbucket.org/knegusen/"
+  },
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://knegusen@bitbucket.org/knegusen/generator-wallaby-webpack-react.git"
+  },
   "keywords": [
     "yeoman-generator",
     "wallabyjs",
@@ -26,5 +38,10 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-mocha-test": "^0.12.7",
     "mocha": "^2.2.5"
-  }
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ]
 }
