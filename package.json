@@ -19,12 +19,16 @@
   },
   "keywords": [
     "yeoman-generator",
+    "wallaby",
     "wallabyjs",
     "webpack",
     "react",
+    "reactjs",
     "babel",
     "es6",
-    "hot reload"
+    "hmr",
+    "hot",
+    "react-transform"
   ],
   "dependencies": {
     "async": "^1.3.0",
