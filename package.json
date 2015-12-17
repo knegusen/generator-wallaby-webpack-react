@@ -1,6 +1,6 @@
 {
   "name": "generator-wallaby-webpack-react",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Yeoman generator for wallabyjs, webpack, react, hot reloading and babel.",
   "files": [
     "app"
