@@ -4,6 +4,7 @@ var generators = require('yeoman-generator');
 var chalk = require('chalk');
 var path = require('path');
 var exec = require('child_process').exec;
+var mkdirp = require('mkdirp');
 
 var REACT_FOLDER = "src/react";
 var REACT_TEST_FOLDER = "src-test/react";
@@ -105,11 +106,11 @@ module.exports = generators.Base.extend({
     },
 
     _createSrcFolder: function () {
-        this.mkdir("src");
+        mkdirp("src");
     },
 
     _createSrcTestFolder: function (name) {
-        this.mkdir("src-test");
+        mkdirp("src-test");
     },
 
     _createGitRepo: function () {

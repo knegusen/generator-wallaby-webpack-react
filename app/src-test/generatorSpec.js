@@ -1,20 +1,19 @@
 describe("generator", function () {
 
-    var yeoman = require('yeoman-generator'); // a reference to the generator module
     var path = require('path'); // reference to the built in path module
     var assert; // will become the Yeoman assert object
-    var helpers;
+    var testGenerator;
 
     before(function (done) {
-        assert = yeoman.assert; // create the yeoman assert object
-        helpers = yeoman.test; // create the yeoman test generator
+        assert = require('yeoman-assert'); // create the yeoman assert object
+        testGenerator = require('yeoman-test'); // create the yeoman test generator
         // run the mock generator with some options
 
         var mockPrompt = {
             useGit: 'n'
         };
 
-        helpers.run(path.join(__dirname, '../../app')) // run the generator from the app directory
+        testGenerator.run(path.join(__dirname, '../../app')) // run the generator from the app directory
             .inDir(path.join(__dirname, './tmp')) // generate the generator files in the tmp directory
             .withOptions({skipInstall: true, createGitRepo: false})
             .withPrompts(mockPrompt)
