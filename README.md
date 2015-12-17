@@ -1,6 +1,6 @@
 # Getting started
 
-## Usage
+## Installation
 
 Install required tools:
 
@@ -18,18 +18,31 @@ Run yo wallaby-webpack-react:
 
 ```$ yo wallaby-webpack-react```
 
-## Configure Wallaby
+## Usage
 
-### Intellij
+### Server
 
-Open:
+Simple server to use for react hot reloading. 
 
 ```
-Run -> Edit Configurations..
-```
+    npm start
+``` 
 
-Then add new configuration by clicking ```+```, name it Wallaby, and browse for the ```wallaby.js``` file that resides in the root directory of the repository.
+Open your browser and go to http://localhost:3000
 
-### Other Ideas
+### Testing
 
-Please check [wallaby.js](http://www.wallabyjs.com) for more information how to configure for other ideas.
+You can test both using npm (karma) and wallabyJS. 
+
+#### Using node
+
+Run single run for tests:
+
+```$ npm test```
+
+#### Using wallaby
+
+Download plugin from [wallaby.js](http://www.wallabyjs.com) and add to one of the supported IDEAS.
+The wallaby config file is tested ad verified in IntelliJ and Webstorm.
+
+Please check [wallaby.js](http://www.wallabyjs.com) for more information about the awesome test framework.

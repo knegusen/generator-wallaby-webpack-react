@@ -14,9 +14,17 @@ Run the following command to enable React Hot Reloading:
 
 It will start a minimal webpack-dev-server that listens for changes in your react components.
 
-## IntelliJ
+## Tests
 
-### Configure Wallaby
+### Terminal
+
+```$ npm test```
+
+### IDEA
+
+Configure Wallaby for one of the supported IDEAs.
+
+#### Configure Wallaby in Intellij
 
 Open:
 
