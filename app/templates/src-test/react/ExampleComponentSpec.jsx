@@ -19,7 +19,7 @@ describe('ExampleComponent', function () {
     describe("props", () => {
         it('should write label', function () {
             instance = ReactDOM.render(<ExampleComponent>Label</ExampleComponent>, container);
-            expect(React.findDOMNode(instance).innerText).toBe("Label");
+            expect(ReactDOM.findDOMNode(instance).innerText).toBe("Label");
         });
     });
 });
