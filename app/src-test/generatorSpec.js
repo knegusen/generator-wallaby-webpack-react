@@ -10,7 +10,8 @@ describe("generator", function () {
         // run the mock generator with some options
 
         var mockPrompt = {
-            useGit: 'n'
+            useGit: 'n',
+            useKarma: 'y'
         };
 
         testGenerator.run(path.join(__dirname, '../../app')) // run the generator from the app directory
@@ -41,7 +42,7 @@ describe("generator", function () {
         });
 
         it("updates package.json with package name", function () {
-            assert.fileContent('package.json', /['|"]*name['|"]*[ ]*:[ ]*['|"]package['|"]/);
+            assert.fileContent('package.json', /['|"]*name['|"]*[ ]*:[ ]*['|"]packageName['|"]/);
         });
 
         it("contains correct dependencies", function () {
@@ -153,6 +154,35 @@ describe("generator", function () {
         });
 
         //TODO: Describe .eslintrc
+    });
+
+    describe("karma", function () {
+        it("creates creates karma config files", function () {
+            assert.file('karma-conf.js');
+            assert.file('karmaTests.js');
+            assert.file('webpack.config.karma.js');
+
+            //TODO: Describe files.
+        });
+
+        it('uses package.json file with karma dependencies', function () {
+            var packageJSonFile = 'package.json';
+            assert.fileContent([
+                [packageJSonFile, /jasmine-core/],
+                [packageJSonFile, /karma/],
+                [packageJSonFile, /karma-jasmine/],
+                [packageJSonFile, /karma-phantomjs-launcher/],
+                [packageJSonFile, /karma-sourcemap-loader/],
+                [packageJSonFile, /karma-webpack/]
+            ]);
+        });
+
+        it('adds npm test task', function () {
+            var packageJSonFile = 'package.json';
+            assert.fileContent([
+                [packageJSonFile, /"test": "node .\/node_modules\/karma\/bin\/karma start karma-conf.js"/]
+            ]);
+        });
     });
 
     describe("git", function () {

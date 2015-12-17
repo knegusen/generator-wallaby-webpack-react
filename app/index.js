@@ -13,12 +13,19 @@ module.exports = generators.Base.extend({
 
     prompting: function () {
         var done = this.async();
-        this.prompt({
-            type: 'input',
-            name: 'useGit',
-            message: 'Do you want to initialize git repo? (y/n)',
-            default: 'y'
-        }, function (answers) {
+        this.prompt([
+            {
+                type: 'input',
+                name: 'useGit',
+                message: 'Do you want to initialize git repo? (y/n)',
+                default: 'y'
+            },
+            {
+                type: 'input',
+                name: 'useKarma',
+                message: 'Do you want to be able to run your test using node and karma? (y/n)',
+                default: 'y'
+            }], function (answers) {
             this.answers = answers;
             done();
         }.bind(this));
@@ -46,6 +53,14 @@ module.exports = generators.Base.extend({
         this._copyReactFile('App.jsx');
         this._copyReactFile('ExampleComponent.jsx');
         this._copyReactTestFile('ExampleComponentSpec.jsx');
+    },
+
+    karmaFiles: function () {
+        if (this._useKarma()) {
+            this._copyToRoot('karma-conf.js');
+            this._copyToRoot('karmaTests.js');
+            this._copyToRoot('webpack.config.karma.js');
+        }
     },
 
     install: function () {
@@ -107,7 +122,15 @@ module.exports = generators.Base.extend({
     },
 
     _createPackageJson: function () {
-        this.template('package.json', 'package.json', {packageName: "package"});
+        if (this._useKarma()) {
+            this.template('packageWithKarma.json', 'package.json', {
+                packageName: 'packageName'
+            });
+        } else {
+            this.template('package.json', 'package.json', {
+                packageName: 'packageName'
+            });
+        }
     },
 
     _createSrcFolder: function () {
@@ -148,5 +171,9 @@ module.exports = generators.Base.extend({
         } else {
 
         }
+    },
+
+    _useKarma: function () {
+        return this.answers.useKarma == 'y';
     }
 });
