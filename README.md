@@ -22,11 +22,9 @@ Run yo wallaby-webpack-react:
 
 ### Server
 
-Simple server to use for react hot reloading. 
-
-```
-    npm start
-``` 
+Simple server to use for react hot reloading.
+ 
+ ```$ npm start```
 
 Open your browser and go to http://localhost:3000
 
