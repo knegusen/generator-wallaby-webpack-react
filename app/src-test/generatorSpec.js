@@ -48,11 +48,24 @@ describe("generator", function () {
         it("contains correct dependencies", function () {
             var packageJSonFile = 'package.json';
             assert.fileContent([
-                [packageJSonFile, /babel/],
                 [packageJSonFile, /babel-core/],
+                [packageJSonFile, /babel-eslint/],
                 [packageJSonFile, /babel-loader/],
+                [packageJSonFile, /babel-plugin-react-transform/],
+                [packageJSonFile, /babel-preset-es2015/],
+                [packageJSonFile, /babel-preset-react/],
+                [packageJSonFile, /eslint/],
+                [packageJSonFile, /eslint-plugin-babel/],
+                [packageJSonFile, /eslint-plugin-react/],
+                [packageJSonFile, /express/],
+                [packageJSonFile, /react-transform-catch-errors/],
+                [packageJSonFile, /react-transform-hmr/],
+                [packageJSonFile, /redbox-react/],
+                [packageJSonFile, /rimraf/],
                 [packageJSonFile, /wallaby-webpack/],
-                [packageJSonFile, /wallaby/],
+                [packageJSonFile, /webpack/],
+                [packageJSonFile, /webpack-dev-middleware/],
+                [packageJSonFile, /webpack-hot-middleware/],
                 [packageJSonFile, /react/]
             ]);
         });
@@ -66,12 +79,20 @@ describe("generator", function () {
         //TODO: Add tests for wallaby.js file
     });
 
-    describe("webpack.config", function () {
-        it("creates webpack.config", function () {
-            assert.file('webpack.config.js');
+    describe("webpack.config.dev", function () {
+        it("creates webpack.config.dev", function () {
+            assert.file('webpack.config.dev.js');
         });
 
-        //TODO: Add test for webpack.config.js
+        //TODO: Add test for webpack.config.dev.js
+    });
+
+    describe("webpack.config.prod", function () {
+        it("creates webpack.config.prod", function () {
+            assert.file('webpack.config.prod.js');
+        });
+
+        //TODO: Add test for webpack.config.prod.js
     });
 
     describe("react examples", function () {
@@ -85,8 +106,8 @@ describe("generator", function () {
             //TODO: Describe index.html?
         });
 
-        it("creates main.jsx file", function () {
-            assert.file('src/react/Main.jsx');
+        it("creates App.jsx file", function () {
+            assert.file('src/react/App.jsx');
             //TODO: Describe main.jsx?
         });
 
@@ -107,6 +128,24 @@ describe("generator", function () {
         it("creates readme.md file", function () {
             assert.file('readme.md');
         });
+
+        //TODO: Describe readme.md
+    });
+
+    describe(".babelrc", function () {
+        it("creates .babelrc file", function () {
+            assert.file('.babelrc');
+        });
+
+        //TODO: Describe .babelrc
+    });
+
+    describe(".eslintrc", function () {
+        it("creates .eslintrc file", function () {
+            assert.file('.eslintrc');
+        });
+
+        //TODO: Describe .eslintrc
     });
 
     describe("git", function () {

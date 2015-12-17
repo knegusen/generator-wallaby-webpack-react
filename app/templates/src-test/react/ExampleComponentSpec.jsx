@@ -1,7 +1,5 @@
-'use strict';
-
 import React from 'react';
-import TestUtils from 'react/lib/ReactTestUtils';
+import ReactDOM from 'react-dom';
 import ExampleComponent from '../../src/react/ExampleComponent'
 
 describe('ExampleComponent', function () {
@@ -20,7 +18,7 @@ describe('ExampleComponent', function () {
 
     describe("props", () => {
         it('should write label', function () {
-            instance = React.render(<ExampleComponent>Label</ExampleComponent>, container);
+            instance = ReactDOM.render(<ExampleComponent>Label</ExampleComponent>, container);
             expect(React.findDOMNode(instance).innerText).toBe("Label");
         });
     });

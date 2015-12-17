@@ -32,13 +32,16 @@ module.exports = generators.Base.extend({
         this._createPackageJson();
         this._createWallabyJS();
         this._createWebpackConfig();
+        this._createBabelRC();
+        this._createESLintRC();
         this._createReadme();
         this._createGitignore();
     },
+
     reactRelatedFiles: function () {
         this._copyPhantomJSShims();
         this._copyToRoot('index.html');
-        this._copyReactFile('Main.jsx');
+        this._copyReactFile('App.jsx');
         this._copyReactFile('ExampleComponent.jsx');
         this._copyReactTestFile('ExampleComponentSpec.jsx');
     },
@@ -53,12 +56,20 @@ module.exports = generators.Base.extend({
         this._createGitRepo();
     },
 
+    _createBabelRC: function () {
+        this._copyToRoot('.babelrc');
+    },
+
+    _createESLintRC: function () {
+        this._copyToRoot('.eslintrc');
+    },
+
     _createReadme: function () {
         this._copyToRoot('readme.md');
     },
 
     _createGitignore: function () {
-        this.copy('gitignore', '.gitignore');
+        this.copy('.gitignore', '.gitignore');
     },
 
     _copyPhantomJSShims: function () {
@@ -77,7 +88,8 @@ module.exports = generators.Base.extend({
     },
 
     _createWebpackConfig: function () {
-        this._copyToRoot('webpack.config.js');
+        this._copyToRoot('webpack.config.dev.js');
+        this._copyToRoot('webpack.config.prod.js');
     },
 
     _createWallabyJS: function () {

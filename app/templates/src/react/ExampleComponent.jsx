@@ -1,12 +1,12 @@
-'use strict';
+import React, {Component} from 'react'
 
-import React from 'react'
-
-class ExampleComponent extends React.Component {
+class ExampleComponent extends Component {
     render() {
-        return <div className="blueLabel">
-            {this.props ? this.props.children : 'no label'}
-        </div>;
+        return (
+            <div className="label">
+                {this.props ? this.props.children : 'no label'}
+            </div>
+        );
     }
 }
 

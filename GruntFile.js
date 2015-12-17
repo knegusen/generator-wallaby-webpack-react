@@ -24,7 +24,7 @@ module.exports = function (grunt) {
                 options: {
                     spawn: true,
                     interrupt: true,
-                    debounceDelay: 250,
+                    debounceDelay: 250
                 },
                 files: ['Gruntfile.js', 'src/*.js', 'test/*.js'],
                 tasks: ['mochaTest:continuous']
