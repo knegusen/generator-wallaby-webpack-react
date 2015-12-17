@@ -32,6 +32,7 @@ module.exports = generators.Base.extend({
     copyFiles: function () {
         this._createPackageJson();
         this._createWallabyJS();
+        this._createDevServerJS();
         this._createWebpackConfig();
         this._createBabelRC();
         this._createESLintRC();
@@ -95,6 +96,10 @@ module.exports = generators.Base.extend({
 
     _createWallabyJS: function () {
         this._copyToRoot('wallaby.js');
+    },
+
+    _createDevServerJS: function () {
+        this._copyToRoot('devServer.js');
     },
 
     _copyToRoot: function (fileName) {

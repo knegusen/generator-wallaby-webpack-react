@@ -78,6 +78,14 @@ describe("generator", function () {
         //TODO: Add tests for wallaby.js file
     });
 
+    describe('test', function () {
+        it('creates devServer.js', function () {
+            assert.file('devServer.js');
+        });
+
+        //TODO: Add tests for devServer.js file
+    });
+
     describe("webpack.config.dev", function () {
         it("creates webpack.config.dev", function () {
             assert.file('webpack.config.dev.js');
