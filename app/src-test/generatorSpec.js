@@ -159,6 +159,7 @@ describe("generator", function () {
         it('initialises a Git repository', function () {
             //TODO: Test that git repo is initialized
         });
+
         it("creates .gitignore file", function () {
             assert.file('.gitignore');
         });
