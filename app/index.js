@@ -59,19 +59,19 @@ module.exports = generators.Base.extend({
     },
 
     _createBabelRC: function () {
-        this._copyToRoot('.babelrc');
+        this.copy('babelrc', '.babelrc');
     },
 
     _createESLintRC: function () {
-        this._copyToRoot('.eslintrc');
-    },
-
-    _createReadme: function () {
-        this._copyToRoot('readme.md');
+        this.copy('eslintrc', '.eslintrc');
     },
 
     _createGitignore: function () {
         this.copy('gitignore', '.gitignore');
+    },
+
+    _createReadme: function () {
+        this._copyToRoot('readme.md');
     },
 
     _copyPhantomJSShims: function () {
