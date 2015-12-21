@@ -65,6 +65,7 @@ module.exports = generators.Base.extend({
 
     install: function () {
         if (!this.options.skipInstall) {
+            this.log('\nRunning npm install\n');
             this.npmInstall();
         }
     },
