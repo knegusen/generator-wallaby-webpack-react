@@ -9,25 +9,15 @@
   },
   "parser": "babel-eslint",
   "rules": {
-    "quotes": [
-      2,
-      "single"
-    ],
-    "strict": [
-      2,
-      "never"
-    ],
-    "babel/generator-star-spacing": 1,
-    "babel/new-cap": 1,
-    "babel/object-shorthand": 1,
-    "babel/arrow-parens": 1,
-    "babel/no-await-in-loop": 1,
+    "quotes": [1, "single"],
+    "semi": [1, "always"],
+    "arrow-parens" : [1, "always"],
+    "react/react-in-jsx-scope": 2,
     "react/jsx-uses-react": 2,
-    "react/jsx-uses-vars": 2,
-    "react/react-in-jsx-scope": 2
+    "react/jsx-key" : 2
   },
   "plugins": [
-    "babel",
     "react"
-  ]
+  ],
+  "extends": "eslint:recommended"
 }
