@@ -37,16 +37,22 @@ describe("generator", function () {
     });
 
     describe("package.json", function () {
+
+        var packageJSonFile;
+
+        before(function () {
+            packageJSonFile = 'package.json';
+        });
+
         it("creates package.json", function () {
-            assert.file('package.json');
+            assert.file(packageJSonFile);
         });
 
         it("updates package.json with package name", function () {
-            assert.fileContent('package.json', /['|"]*name['|"]*[ ]*:[ ]*['|"]packageName['|"]/);
+            assert.fileContent(packageJSonFile, /['|"]*name['|"]*[ ]*:[ ]*['|"]packageName['|"]/);
         });
 
         it("contains correct dependencies", function () {
-            var packageJSonFile = 'package.json';
             assert.fileContent([
                 [packageJSonFile, /babel-core/],
                 [packageJSonFile, /babel-eslint/],
@@ -55,7 +61,6 @@ describe("generator", function () {
                 [packageJSonFile, /babel-preset-es2015/],
                 [packageJSonFile, /babel-preset-react/],
                 [packageJSonFile, /eslint/],
-                [packageJSonFile, /eslint-plugin-babel/],
                 [packageJSonFile, /eslint-plugin-react/],
                 [packageJSonFile, /express/],
                 [packageJSonFile, /react-transform-catch-errors/],
@@ -68,6 +73,32 @@ describe("generator", function () {
                 [packageJSonFile, /webpack-hot-middleware/],
                 [packageJSonFile, /react/]
             ]);
+        });
+
+        describe("tasks", function () {
+            it("contains clean", function () {
+                assertNPMTask("clean", "rimraf dist");
+            });
+
+            it("contains build:webpack", function () {
+                assertNPMTask("build:webpack", "NODE_ENV=production webpack --config webpack.config.prod.js");
+            });
+
+            it("contains build", function () {
+                assertNPMTask("build", "npm run clean && npm run build:webpack");
+            });
+
+            it("contains build", function () {
+                assertNPMTask("start", "node devServer.js");
+            });
+
+            it("contains lint", function () {
+                assertNPMTask("lint", ".\/node_modules\/eslint\/bin\/eslint.js src\/\\*\\*\/\\*");
+            });
+
+            it("contains lint-fix", function () {
+                assertNPMTask("lint-fix", ".\/node_modules\/eslint\/bin\/eslint.js src\/\\*\\*\/\\* --fix");
+            });
         });
     });
 
@@ -179,9 +210,7 @@ describe("generator", function () {
 
         it('adds npm test task', function () {
             var packageJSonFile = 'package.json';
-            assert.fileContent([
-                [packageJSonFile, /"test": "node .\/node_modules\/karma\/bin\/karma start karma-conf.js"/]
-            ]);
+            assertNPMTask("test", "node .\/node_modules\/karma\/bin\/karma start karma-conf.js");
         });
     });
 
@@ -203,4 +232,9 @@ describe("generator", function () {
             ]);
         });
     });
+
+    function assertNPMTask(task, code) {
+        var regExp = new RegExp("\"" + task + "\": \"" + code + "\"");
+        assert.fileContent('package.json', regExp);
+    }
 });
