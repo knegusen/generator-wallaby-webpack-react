@@ -43,7 +43,9 @@ module.exports = generators.Base.extend({
         this._createWebpackConfig();
         this._createESLintRC();
         this._createReadme();
-        this._createGitignore();
+        if (this.answers.useGit == 'y') {
+            this._createGitignore();
+        }
     },
 
     reactRelatedFiles: function () {
