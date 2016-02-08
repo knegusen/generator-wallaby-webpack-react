@@ -93,11 +93,11 @@ describe("generator", function () {
             });
 
             it("contains lint", function () {
-                assertNPMTask("lint", ".\/node_modules\/eslint\/bin\/eslint.js src\/\\*\\*\/\\*");
+                assertNPMTask("lint", ".\/node_modules\/eslint\/bin\/eslint.js src\\*\/\\*\\*\/\\*");
             });
 
             it("contains lint-fix", function () {
-                assertNPMTask("lint-fix", ".\/node_modules\/eslint\/bin\/eslint.js src\/\\*\\*\/\\* --fix");
+                assertNPMTask("lint-fix", ".\/node_modules\/eslint\/bin\/eslint.js src\\*\/\\*\\*\/\\* --fix");
             });
         });
     });
@@ -169,14 +169,6 @@ describe("generator", function () {
         });
 
         //TODO: Describe readme.md
-    });
-
-    describe(".babelrc", function () {
-        it("creates .babelrc file", function () {
-            assert.file('.babelrc');
-        });
-
-        //TODO: Describe .babelrc
     });
 
     describe(".eslintrc", function () {

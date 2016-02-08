@@ -41,7 +41,6 @@ module.exports = generators.Base.extend({
         this._createWallabyJS();
         this._createDevServerJS();
         this._createWebpackConfig();
-        this._createBabelRC();
         this._createESLintRC();
         this._createReadme();
         this._createGitignore();
@@ -72,10 +71,6 @@ module.exports = generators.Base.extend({
 
     end: function () {
         this._createGitRepo();
-    },
-
-    _createBabelRC: function () {
-        this.copy('babelrc', '.babelrc');
     },
 
     _createESLintRC: function () {

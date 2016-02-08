@@ -1,6 +1,6 @@
 {
   "name": "generator-wallaby-webpack-react",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Yeoman generator for wallabyjs, webpack, react, hot reloading, karma and babel.",
   "files": [
     "app"
@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "grunt": "^0.4.5",
-    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-jshint": "^0.12.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-mocha-test": "^0.12.7",
     "mocha": "^2.2.5",
