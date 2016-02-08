@@ -38,9 +38,9 @@
     "build:webpack": "NODE_ENV=production webpack --config webpack.config.prod.js",
     "build": "npm run clean && npm run build:webpack",
     "start": "node devServer.js",
-    "lint": "./node_modules/eslint/bin/eslint.js src*/**/*",
-    "lint-fix": "./node_modules/eslint/bin/eslint.js src*/**/* --fix",
-    "test": "node ./node_modules/karma/bin/karma start karma-conf.js"
+    "lint": "eslint src*/**/*",
+    "lint-fix": "eslint src*/**/* --fix",
+    "test": "karma start karma-conf.js"
   },
   "dependencies": {
     "react": "^0.14.7",

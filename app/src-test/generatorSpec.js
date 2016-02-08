@@ -93,11 +93,11 @@ describe("generator", function () {
             });
 
             it("contains lint", function () {
-                assertNPMTask("lint", ".\/node_modules\/eslint\/bin\/eslint.js src\\*\/\\*\\*\/\\*");
+                assertNPMTask("lint", "eslint src\\*\/\\*\\*\/\\*");
             });
 
             it("contains lint-fix", function () {
-                assertNPMTask("lint-fix", ".\/node_modules\/eslint\/bin\/eslint.js src\\*\/\\*\\*\/\\* --fix");
+                assertNPMTask("lint-fix", "eslint src\\*\/\\*\\*\/\\* --fix");
             });
         });
     });
@@ -202,7 +202,7 @@ describe("generator", function () {
 
         it('adds npm test task', function () {
             var packageJSonFile = 'package.json';
-            assertNPMTask("test", "node .\/node_modules\/karma\/bin\/karma start karma-conf.js");
+            assertNPMTask("test", "karma start karma-conf.js");
         });
     });
 

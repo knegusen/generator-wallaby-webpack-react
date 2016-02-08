@@ -31,8 +31,8 @@
     "build:webpack": "NODE_ENV=production webpack --config webpack.config.prod.js",
     "build": "npm run clean && npm run build:webpack",
     "start": "node devServer.js",
-    "lint": "./node_modules/eslint/bin/eslint.js src*/**/*",
-    "lint-fix": "./node_modules/eslint/bin/eslint.js src*/**/* --fix"
+    "lint": "eslint src*/**/*",
+    "lint-fix": "eslint src*/**/* --fix"
   },
   "dependencies": {
     "react": "^0.14.7",
