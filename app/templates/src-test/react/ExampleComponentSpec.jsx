@@ -1,25 +1,30 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import ExampleComponent from '../../src/react/ExampleComponent'
+import { createRenderer } from 'react-addons-test-utils';
+import ExampleComponent from '../../src/react/ExampleComponent';
 
-describe('ExampleComponent', function () {
+describe('ExampleComponent', () => {
 
-    var instance,
-        container;
+    let shallowRenderer;
 
     beforeEach(() => {
-        container = document.createElement('div');
-        document.body.appendChild(container);
+        shallowRenderer = createRenderer();
     });
 
-    afterEach(() => {
-        document.body.removeChild(container);
-    });
+    describe('label', () => {
+        describe('when not defined', () => {
+            it('renders default label', () => {
+                shallowRenderer.render(<ExampleComponent />);
+                const result = shallowRenderer.getRenderOutput();
+                expect(result.props.children).toBe('No label');
+            });
+        });
 
-    describe("props", () => {
-        it('should write label', function () {
-            instance = ReactDOM.render(<ExampleComponent>Label</ExampleComponent>, container);
-            expect(ReactDOM.findDOMNode(instance).innerText).toBe("Label");
+        describe('when defined', () => {
+            it('should write label', () => {
+                shallowRenderer.render(<ExampleComponent>Label</ExampleComponent>);
+                const result = shallowRenderer.getRenderOutput();
+                expect(result.props.children).toEqual('Label');
+            });
         });
     });
 });
