@@ -22,7 +22,7 @@ module.exports = function (wallaby) {
         ],
 
         tests: [
-            {pattern: 'src-test/**/ExampleComponentSpec.js*', load: false}
+            {pattern: 'src-test/**/*Spec.js*', load: false}
         ],
 
         compilers: {
