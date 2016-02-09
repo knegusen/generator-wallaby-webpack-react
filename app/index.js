@@ -52,8 +52,12 @@ module.exports = generators.Base.extend({
         this._copyPhantomJSShims();
         this._copyToRoot('index.html');
         this._copyReactFile('App.jsx');
+        this._copyReactFile('ExampleComponents.jsx');
+        this._copyReactTestFile('ExampleComponentsSpec.jsx');
         this._copyReactFile('ExampleComponent.jsx');
         this._copyReactTestFile('ExampleComponentSpec.jsx');
+        this._copyReactFile('ExampleStateComponent.jsx');
+        this._copyReactTestFile('ExampleStateComponentSpec.jsx');
     },
 
     karmaFiles: function () {

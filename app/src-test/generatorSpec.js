@@ -150,7 +150,21 @@ describe("generator", function () {
             //TODO: Describe main.jsx?
         });
 
+        describe("example components file", function () {
+
+            it("creates ExampleComponents.jsx file", function () {
+                assert.file('src/react/ExampleComponents.jsx');
+            });
+
+            it("creates ExampleComponentsSpec.jsx file", function () {
+                assert.file('src-test/react/ExampleComponentsSpec.jsx');
+            });
+
+            //TODO: Describe ExampleComponents.jsx and ExampleComponentsSpec.jsx?
+        });
+
         describe("example component file", function () {
+
             it("creates ExampleComponent.jsx file", function () {
                 assert.file('src/react/ExampleComponent.jsx');
             });
@@ -160,6 +174,19 @@ describe("generator", function () {
             });
 
             //TODO: Describe ExampleComponent.jsx and ExampleComponentSpec.jsx?
+        });
+
+        describe("example state component file", function () {
+
+            it("creates ExampleStateComponent.jsx file", function () {
+                assert.file('src/react/ExampleStateComponent.jsx');
+            });
+
+            it("creates ExampleStateComponentSpec.jsx file", function () {
+                assert.file('src-test/react/ExampleStateComponentSpec.jsx');
+            });
+
+            //TODO: Describe ExampleStateComponent.jsx and ExampleStateComponentSpec.jsx?
         });
     });
 
