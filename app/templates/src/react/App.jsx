@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ExampleComponent from './ExampleComponent';
+import ExampleComponents from './ExampleComponents';
 
-ReactDOM.render(<ExampleComponent>This is the example
-    component</ExampleComponent>, document.getElementById('appContent'));
+ReactDOM.render(<ExampleComponents />, document.getElementById('appContent'));
