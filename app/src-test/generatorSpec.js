@@ -60,9 +60,15 @@ describe("generator", function () {
                 [packageJSonFile, /babel-plugin-react-transform/],
                 [packageJSonFile, /babel-preset-es2015/],
                 [packageJSonFile, /babel-preset-react/],
+                [packageJSonFile, /babel-preset-react-hmre/],
+                [packageJSonFile, /babel-preset-stage-0/],
                 [packageJSonFile, /eslint/],
                 [packageJSonFile, /eslint-plugin-react/],
+                [packageJSonFile, /eslint-plugin-jasmine/],
                 [packageJSonFile, /express/],
+                [packageJSonFile, /json-loader/],
+                [packageJSonFile, /npm-check-updates/],
+                [packageJSonFile, /react-addons-test-utils/],
                 [packageJSonFile, /react-transform-catch-errors/],
                 [packageJSonFile, /react-transform-hmr/],
                 [packageJSonFile, /redbox-react/],
@@ -71,7 +77,8 @@ describe("generator", function () {
                 [packageJSonFile, /webpack/],
                 [packageJSonFile, /webpack-dev-middleware/],
                 [packageJSonFile, /webpack-hot-middleware/],
-                [packageJSonFile, /react/]
+                [packageJSonFile, /react/],
+                [packageJSonFile, /react-dom/]
             ]);
         });
 
@@ -135,10 +142,6 @@ describe("generator", function () {
     });
 
     describe("react examples", function () {
-
-        it("create phantomjs-shims", function () {
-            assert.file('src-test/phantomjs-shims.js');
-        });
 
         it("creates index.html file", function () {
             assert.file('index.html');
@@ -209,7 +212,6 @@ describe("generator", function () {
     describe("karma", function () {
         it("creates creates karma config files", function () {
             assert.file('karma-conf.js');
-            assert.file('karmaTests.js');
             assert.file('webpack.config.karma.js');
 
             //TODO: Describe files.

@@ -49,7 +49,6 @@ module.exports = generators.Base.extend({
     },
 
     reactRelatedFiles: function () {
-        this._copyPhantomJSShims();
         this._copyToRoot('index.html');
         this._copyReactFile('App.jsx');
         this._copyReactFile('ExampleComponents.jsx');
@@ -63,7 +62,6 @@ module.exports = generators.Base.extend({
     karmaFiles: function () {
         if (this._useKarma()) {
             this._copyToRoot('karma-conf.js');
-            this._copyToRoot('karmaTests.js');
             this._copyToRoot('webpack.config.karma.js');
         }
     },
@@ -89,11 +87,6 @@ module.exports = generators.Base.extend({
 
     _createReadme: function () {
         this._copyToRoot('readme.md');
-    },
-
-    _copyPhantomJSShims: function () {
-        var file = path.join("src-test", 'phantomjs-shims.js');
-        this.copy(file, file);
     },
 
     _copyReactFile: function (fileName) {

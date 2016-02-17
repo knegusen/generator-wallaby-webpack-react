@@ -6,12 +6,13 @@ module.exports = function (config) {
         ],
 
         files: [
-            {pattern: 'karmaTests.js', watched: false}
+            'src-test/**/*Spec.js*'
         ],
 
         preprocessors: {
             // add webpack as preprocessor
-            'karmaTests.js': ['webpack', 'sourcemap']
+            'src/**/*.js*': ['webpack', 'sourcemap'],
+            'src-test/**/*.js*': ['webpack', 'sourcemap']
         },
 
         webpack: require('./webpack.config.karma.js'),

@@ -1,5 +1,5 @@
 {
-  "name": "<%= packageName %>",
+  "name": "packageName",
   "version": "0.1.0",
   "description": "",
   "devDependencies": {
@@ -11,11 +11,13 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-react-hmre": "^1.1.0",
     "babel-preset-stage-0": "^6.5.0",
+    "enzyme": "^2.0.0",
     "eslint": "^1.10.3",
     "eslint-plugin-jasmine": "^1.6.0",
     "eslint-plugin-react": "^3.12.0",
     "express": "^4.13.3",
     "jasmine-core": "^2.4.1",
+    "json-loader": "^0.5.4",
     "karma": "^0.13.15",
     "karma-jasmine": "^0.3.6",
     "karma-phantomjs-launcher": "^1.0.0",

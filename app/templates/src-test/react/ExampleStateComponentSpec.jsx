@@ -1,33 +1,28 @@
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import { shallow } from 'enzyme';
 import ExampleStateComponent from '../../src/react/ExampleStateComponent';
 
 describe('ExampleStateComponent', () => {
     it('is rendered', () => {
-        const component = TestUtils.renderIntoDocument(<ExampleStateComponent/>);
-        const textNode = TestUtils.findRenderedDOMComponentWithTag(component, 'p');
-        expect(textNode.textContent).toBe('example text');
+        const component = shallow(<ExampleStateComponent/>);
+        expect(component.find('p').text()).toBe('example text');
     });
 
     describe('button', () => {
         it('is rendered', () => {
-            const component = TestUtils.renderIntoDocument(<ExampleStateComponent/>);
-            expect(() => {
-                TestUtils.findRenderedDOMComponentWithTag(component, 'button');
-            }).not.toThrow();
+            const component = shallow(<ExampleStateComponent/>);
+            expect(component.find('button').length).toBe(1);
         });
 
         it('has class name button', () => {
-            const component = TestUtils.renderIntoDocument(<ExampleStateComponent/>);
-            const buttonNode = TestUtils.findRenderedDOMComponentWithTag(component, 'button');
-            expect(buttonNode.className).toBe('textChangeButton');
+            const component = shallow(<ExampleStateComponent/>);
+            expect(component.find('button').hasClass('textChangeButton')).toBe(true);
         });
 
         it('updates text after click', () => {
-            const component = TestUtils.renderIntoDocument(<ExampleStateComponent/>);
-            const textNode = TestUtils.findRenderedDOMComponentWithTag(component, 'p');
-            TestUtils.Simulate.click(TestUtils.findRenderedDOMComponentWithTag(component, 'button'));
-            expect(textNode.textContent).toBe('new state example text');
+            const component = shallow(<ExampleStateComponent/>);
+            component.find('button').simulate('click');
+            expect(component.find('p').text()).toBe('new state example text');
         });
     });
 });

@@ -5,19 +5,27 @@ module.exports = function (wallaby) {
 
     var webpackPostprocessor = wallabyWebpack({
         resolve: {
-            extensions: ['', '.js', '.jsx']
+            extensions: ['', '.js', '.jsx', '.json']
+        },
+        module: {
+            loaders: [
+                {test: /\.json$/, loader: 'json'}
+            ]
+        },
+        externals: {
+            'react/lib/ExecutionEnvironment': true,
+            'react/lib/ReactContext': true
         }
     });
 
     var babelCompiler = wallaby.compilers.babel({
         babel: require('babel-core'),
-        presets: ['es2015', 'react'],
-        babelrc: false
+        presets: ['es2015', 'react']
     });
 
     return {
         files: [
-            {pattern: 'src-test/phantomjs-shims.js', instrument: false},
+            {pattern: 'node_modules/phantomjs-polyfill/bind-polyfill.js', instrument: false},
             {pattern: 'src/**/*.js*', load: false}
         ],
 
