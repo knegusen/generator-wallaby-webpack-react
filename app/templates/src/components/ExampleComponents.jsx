@@ -1,6 +1,6 @@
-import React from 'react';
-import ExampleComponent from './ExampleComponent';
-import ExampleStateComponent from './ExampleStateComponent';
+import React from "react";
+import ExampleComponent from "./ExampleComponent";
+import ExampleStateComponent from "./ExampleStateComponent";
 
 export default React.createClass({
 

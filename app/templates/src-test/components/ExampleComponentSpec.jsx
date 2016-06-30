@@ -1,6 +1,6 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import ExampleComponent from '../../src/react/ExampleComponent';
+import React from "react";
+import { shallow } from "enzyme";
+import ExampleComponent from "../../src/components/ExampleComponent";
 
 describe('ExampleComponent', () => {
 

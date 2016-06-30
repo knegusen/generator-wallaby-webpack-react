@@ -149,18 +149,18 @@ describe("generator", function () {
         });
 
         it("creates App.jsx file", function () {
-            assert.file('src/react/App.jsx');
+            assert.file('src/components/App.jsx');
             //TODO: Describe main.jsx?
         });
 
         describe("example components file", function () {
 
             it("creates ExampleComponents.jsx file", function () {
-                assert.file('src/react/ExampleComponents.jsx');
+                assert.file('src/components/ExampleComponents.jsx');
             });
 
             it("creates ExampleComponentsSpec.jsx file", function () {
-                assert.file('src-test/react/ExampleComponentsSpec.jsx');
+                assert.file('src-test/components/ExampleComponentsSpec.jsx');
             });
 
             //TODO: Describe ExampleComponents.jsx and ExampleComponentsSpec.jsx?
@@ -169,11 +169,11 @@ describe("generator", function () {
         describe("example component file", function () {
 
             it("creates ExampleComponent.jsx file", function () {
-                assert.file('src/react/ExampleComponent.jsx');
+                assert.file('src/components/ExampleComponent.jsx');
             });
 
             it("creates ExampleComponentSpec.jsx file", function () {
-                assert.file('src-test/react/ExampleComponentSpec.jsx');
+                assert.file('src-test/components/ExampleComponentSpec.jsx');
             });
 
             //TODO: Describe ExampleComponent.jsx and ExampleComponentSpec.jsx?
@@ -182,11 +182,11 @@ describe("generator", function () {
         describe("example state component file", function () {
 
             it("creates ExampleStateComponent.jsx file", function () {
-                assert.file('src/react/ExampleStateComponent.jsx');
+                assert.file('src/components/ExampleStateComponent.jsx');
             });
 
             it("creates ExampleStateComponentSpec.jsx file", function () {
-                assert.file('src-test/react/ExampleStateComponentSpec.jsx');
+                assert.file('src-test/components/ExampleStateComponentSpec.jsx');
             });
 
             //TODO: Describe ExampleStateComponent.jsx and ExampleStateComponentSpec.jsx?

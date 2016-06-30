@@ -6,8 +6,8 @@ var path = require('path');
 var exec = require('child_process').exec;
 var mkdirp = require('mkdirp');
 
-var REACT_FOLDER = "src/react";
-var REACT_TEST_FOLDER = "src-test/react";
+var REACT_FOLDER = "src/components";
+var REACT_TEST_FOLDER = "src-test/components";
 
 module.exports = generators.Base.extend({
 
