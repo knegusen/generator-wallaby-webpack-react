@@ -8,10 +8,10 @@ describe('ExampleComponents', () => {
     it('is rendered correctly', () => {
         const component = shallow(<ExampleComponents />);
         expect(component.contains(
-            <ExampleComponent>
-                This is the example component
-            </ExampleComponent>,
-            <ExampleStateComponent />
+          <ExampleComponent>
+            This is the example component
+          </ExampleComponent>,
+          <ExampleStateComponent />
         )).toBe(true);
     });
 });

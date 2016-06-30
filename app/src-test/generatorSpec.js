@@ -64,6 +64,7 @@ describe("generator", function () {
                 [packageJSonFile, /babel-preset-stage-0/],
                 [packageJSonFile, /eslint/],
                 [packageJSonFile, /eslint-plugin-react/],
+                [packageJSonFile, /eslint-config-airbnb/],
                 [packageJSonFile, /eslint-plugin-jasmine/],
                 [packageJSonFile, /express/],
                 [packageJSonFile, /json-loader/],

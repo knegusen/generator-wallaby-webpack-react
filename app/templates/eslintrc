@@ -10,43 +10,8 @@
   },
   "parser": "babel-eslint",
   "rules": {
-    "quotes": [
-      1,
-      "single"
-    ],
-    "semi": [
-      1,
-      "always"
-    ],
-    "no-var": 2,
-    "object-shorthand": 1,
-    "prefer-arrow-callback": 1,
-    "prefer-const": 1,
-    "prefer-spread": 1,
-    "prefer-template": 2,
-    "react/react-in-jsx-scope": 2,
-    "react/jsx-uses-react": 2,
-    "react/jsx-key": 0,
-    "no-unused-vars": [
-      2,
-      {
-        "argsIgnorePattern": "args"
-      }
-    ],
-    "arrow-parens": [
-      2,
-      "always"
-    ],
-    "arrow-body-style": [
-      2,
-      "always"
-    ],
-    "arrow-spacing": 1,
-    "constructor-super": 1,
-    "no-arrow-condition": 2,
-    "no-class-assign": 2,
-    "no-const-assign": 2,
-    "no-this-before-super": 2,
+    //jasmine
+    "jasmine/no-disabled-tests": 0,
     "jasmine/no-spec-dupes": [
       1,
       "branch"
@@ -55,11 +20,12 @@
       1,
       "branch"
     ],
-    "jasmine/missing-expect": 0
+    "jasmine/missing-expect": 0,
+    "jasmine/no-suite-callback-args": 2,
+    "jasmine/valid-expect": 1
   },
   "plugins": [
-    "react",
     "jasmine"
   ],
-  "extends": "eslint:recommended"
+  "extends": "airbnb"
 }

@@ -1,13 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 
-class ExampleComponent extends Component {
-    render() {
-        return (
-            <div className="label">
-                {this.props.children ? this.props.children : 'No label'}
-            </div>
-        );
-    }
-}
+const ExampleComponent = ({ children }) => (
+  <div className="label">
+      {children || 'No label'}
+  </div>
+);
+
+ExampleComponent.propTypes = {
+    children: React.PropTypes.string.isRequired,
+};
 
 export default ExampleComponent;

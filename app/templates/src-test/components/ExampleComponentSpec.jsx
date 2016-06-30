@@ -3,11 +3,10 @@ import { shallow } from "enzyme";
 import ExampleComponent from "../../src/components/ExampleComponent";
 
 describe('ExampleComponent', () => {
-
     describe('label', () => {
         describe('when not defined', () => {
             it('renders default label', () => {
-                const component  = shallow(<ExampleComponent />);
+                const component = shallow(<ExampleComponent />);
                 expect(component.contains('No label')).toBe(true);
             });
         });

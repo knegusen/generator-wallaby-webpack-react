@@ -9,12 +9,13 @@ module.exports = function (wallaby) {
         },
         module: {
             loaders: [
-                {test: /\.json$/, loader: 'json'}
+                { test: /\.json$/, loader: 'json' }
             ]
         },
         externals: {
             'react/lib/ExecutionEnvironment': true,
-            'react/lib/ReactContext': true
+            'react/lib/ReactContext': true,
+            'react/addons': true
         }
     });
 
@@ -25,12 +26,12 @@ module.exports = function (wallaby) {
 
     return {
         files: [
-            {pattern: 'node_modules/phantomjs-polyfill/bind-polyfill.js', instrument: false},
-            {pattern: 'src/**/*.js*', load: false}
+            { pattern: 'node_modules/phantomjs-polyfill/bind-polyfill.js', instrument: false },
+            { pattern: 'src/**/*.js*', load: false }
         ],
 
         tests: [
-            {pattern: 'src-test/**/*Spec.js*', load: false}
+            { pattern: 'src-test/**/*Spec.js*', load: false }
         ],
 
         compilers: {
@@ -44,3 +45,6 @@ module.exports = function (wallaby) {
         }
     };
 };
+
+
+

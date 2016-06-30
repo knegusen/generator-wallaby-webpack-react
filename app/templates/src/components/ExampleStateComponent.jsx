@@ -1,23 +1,31 @@
-import React from "react";
+import React, { Component } from "react";
 
-export default React.createClass({
+export default class a extends Component {
 
-    getInitialState(){
-        return {
-            text: 'example text'
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: 'example text',
         };
-    },
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick() {
+    this.setState({ text: 'new state example text' });
+  }
 
     render() {
         return (
-            <div>
-                <p>{this.state.text}</p>
-                <button className='textChangeButton' type='button' onClick={this.onClick}>button</button>
-            </div>
+          <div>
+            <p>{this.state.text}</p>
+            <button
+              className="textChangeButton"
+              type="button"
+              onClick={this.onClick}
+            >
+              button
+            </button>
+          </div>
         );
-    },
-
-    onClick(){
-        this.setState({text: 'new state example text'});
     }
-});
+}
