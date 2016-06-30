@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import ExampleStateComponent from "../../src/components/ExampleStateComponent";
+import ExampleStateComponent from "../ExampleStateComponent";
 
 describe('ExampleStateComponent', () => {
     it('is rendered', () => {

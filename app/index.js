@@ -6,8 +6,9 @@ var path = require('path');
 var exec = require('child_process').exec;
 var mkdirp = require('mkdirp');
 
+var SRC_FOLDER = "src";
 var REACT_FOLDER = "src/components";
-var REACT_TEST_FOLDER = "src-test/components";
+var REACT_TEST_FOLDER = "src/components/__tests__/";
 
 module.exports = generators.Base.extend({
 
@@ -33,7 +34,6 @@ module.exports = generators.Base.extend({
 
     directoryCreation: function () {
         this._createSrcFolder();
-        this._createSrcTestFolder();
     },
 
     copyFiles: function () {
@@ -50,7 +50,7 @@ module.exports = generators.Base.extend({
 
     reactRelatedFiles: function () {
         this._copyToRoot('index.html');
-        this._copyReactFile('App.jsx');
+        this._copySourceFile('App.jsx');
         this._copyReactFile('ExampleComponents.jsx');
         this._copyReactTestFile('ExampleComponentsSpec.jsx');
         this._copyReactFile('ExampleComponent.jsx');
@@ -62,6 +62,7 @@ module.exports = generators.Base.extend({
     karmaFiles: function () {
         if (this._useKarma()) {
             this._copyToRoot('karma-conf.js');
+            this._copyToRoot('karma-files.js');
             this._copyToRoot('webpack.config.karma.js');
         }
     },
@@ -87,6 +88,11 @@ module.exports = generators.Base.extend({
 
     _createReadme: function () {
         this._copyToRoot('readme.md');
+    },
+
+    _copySourceFile: function (fileName) {
+        var file = path.join(SRC_FOLDER, fileName);
+        this.copy(file, file);
     },
 
     _copyReactFile: function (fileName) {
@@ -130,10 +136,6 @@ module.exports = generators.Base.extend({
 
     _createSrcFolder: function () {
         mkdirp("src");
-    },
-
-    _createSrcTestFolder: function (name) {
-        mkdirp("src-test");
     },
 
     _createGitRepo: function () {

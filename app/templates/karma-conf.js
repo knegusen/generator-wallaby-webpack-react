@@ -1,18 +1,19 @@
 module.exports = function (config) {
     config.set({
 
+        basePath: '',
+
         frameworks: [
             'jasmine'
         ],
 
         files: [
-            'src-test/**/*Spec.js*'
+            './karma-files.js'
         ],
 
         preprocessors: {
             // add webpack as preprocessor
-            'src/**/*.js*': ['webpack', 'sourcemap'],
-            'src-test/**/*.js*': ['webpack', 'sourcemap']
+            'karma-files.js': ['webpack', 'sourcemap']
         },
 
         webpack: require('./webpack.config.karma.js'),

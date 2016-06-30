@@ -4,7 +4,7 @@ var webpack = require('webpack');
 module.exports = {
     devtool: 'source-map',
     entry: [
-        './src/components/App.jsx'
+        './src/App.jsx'
     ],
     output: {
         path: path.join(__dirname, 'dist'),

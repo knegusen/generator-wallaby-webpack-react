@@ -30,10 +30,6 @@ describe("generator", function () {
         it("should generate src folder", function () {
             assert.file('src');
         });
-
-        it("should generate src-test folder", function () {
-            assert.file('src-test');
-        });
     });
 
     describe("package.json", function () {
@@ -150,7 +146,7 @@ describe("generator", function () {
         });
 
         it("creates App.jsx file", function () {
-            assert.file('src/components/App.jsx');
+            assert.file('src/App.jsx');
             //TODO: Describe main.jsx?
         });
 
@@ -161,7 +157,7 @@ describe("generator", function () {
             });
 
             it("creates ExampleComponentsSpec.jsx file", function () {
-                assert.file('src-test/components/ExampleComponentsSpec.jsx');
+                assert.file('src/components/__tests__/ExampleComponentsSpec.jsx');
             });
 
             //TODO: Describe ExampleComponents.jsx and ExampleComponentsSpec.jsx?
@@ -174,7 +170,7 @@ describe("generator", function () {
             });
 
             it("creates ExampleComponentSpec.jsx file", function () {
-                assert.file('src-test/components/ExampleComponentSpec.jsx');
+                assert.file('src/components/__tests__/ExampleComponentSpec.jsx');
             });
 
             //TODO: Describe ExampleComponent.jsx and ExampleComponentSpec.jsx?
@@ -187,7 +183,7 @@ describe("generator", function () {
             });
 
             it("creates ExampleStateComponentSpec.jsx file", function () {
-                assert.file('src-test/components/ExampleStateComponentSpec.jsx');
+                assert.file('src/components/__tests__/ExampleStateComponentSpec.jsx');
             });
 
             //TODO: Describe ExampleStateComponent.jsx and ExampleStateComponentSpec.jsx?
@@ -213,6 +209,7 @@ describe("generator", function () {
     describe("karma", function () {
         it("creates creates karma config files", function () {
             assert.file('karma-conf.js');
+            assert.file('karma-files.js');
             assert.file('webpack.config.karma.js');
 
             //TODO: Describe files.
