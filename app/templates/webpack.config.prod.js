@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     devtool: 'source-map',
@@ -8,8 +9,7 @@ module.exports = {
     ],
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: '[name].bundle.js',
-        publicPath: '/static/'
+        filename: '[name].bundle.js'
     },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
@@ -22,7 +22,10 @@ module.exports = {
             compressor: {
                 warnings: false
             }
-        })
+        }),
+        new CopyWebpackPlugin([
+            { from: 'public' }
+        ])
     ],
     module: {
         loaders: [{

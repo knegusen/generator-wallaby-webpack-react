@@ -7,6 +7,7 @@ var exec = require('child_process').exec;
 var mkdirp = require('mkdirp');
 
 var SRC_FOLDER = "src";
+var PUBLIC_FOLDER = "public";
 var REACT_FOLDER = "src/components";
 var REACT_TEST_FOLDER = "src/components/__tests__/";
 
@@ -34,6 +35,7 @@ module.exports = generators.Base.extend({
 
     directoryCreation: function () {
         this._createSrcFolder();
+        this._createPublicFolder();
     },
 
     copyFiles: function () {
@@ -49,8 +51,8 @@ module.exports = generators.Base.extend({
     },
 
     reactRelatedFiles: function () {
-        this._copyToRoot('index.html');
-        this._copySourceFile('App.jsx');
+        this._copyToPublic('index.html');
+        this._copyToSource('App.jsx');
         this._copyReactFile('ExampleComponents.jsx');
         this._copyReactTestFile('ExampleComponentsSpec.jsx');
         this._copyReactFile('ExampleComponent.jsx');
@@ -90,7 +92,7 @@ module.exports = generators.Base.extend({
         this._copyToRoot('readme.md');
     },
 
-    _copySourceFile: function (fileName) {
+    _copyToSource: function (fileName) {
         var file = path.join(SRC_FOLDER, fileName);
         this.copy(file, file);
     },
@@ -122,6 +124,11 @@ module.exports = generators.Base.extend({
         this.copy(fileName, fileName);
     },
 
+    _copyToPublic: function (fileName) {
+        var file = path.join(PUBLIC_FOLDER, fileName);
+        this.copy(file, file);
+    },
+
     _createPackageJson: function () {
         if (this._useKarma()) {
             this.template('packageWithKarma.json', 'package.json', {
@@ -136,6 +143,10 @@ module.exports = generators.Base.extend({
 
     _createSrcFolder: function () {
         mkdirp("src");
+    },
+
+    _createPublicFolder: function () {
+        mkdirp("public");
     },
 
     _createGitRepo: function () {

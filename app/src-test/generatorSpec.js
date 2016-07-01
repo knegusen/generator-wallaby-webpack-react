@@ -30,6 +30,10 @@ describe("generator", function () {
         it("should generate src folder", function () {
             assert.file('src');
         });
+        
+        it("should generate public folder", function () {
+            assert.file('public');
+        });
     });
 
     describe("package.json", function () {
@@ -58,6 +62,7 @@ describe("generator", function () {
                 [packageJSonFile, /babel-preset-react/],
                 [packageJSonFile, /babel-preset-react-hmre/],
                 [packageJSonFile, /babel-preset-stage-0/],
+                [packageJSonFile, /copy-webpack-plugin/],
                 [packageJSonFile, /eslint/],
                 [packageJSonFile, /eslint-plugin-react/],
                 [packageJSonFile, /eslint-config-airbnb/],
@@ -141,7 +146,7 @@ describe("generator", function () {
     describe("react examples", function () {
 
         it("creates index.html file", function () {
-            assert.file('index.html');
+            assert.file('public/index.html');
             //TODO: Describe index.html?
         });
 
