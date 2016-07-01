@@ -5,17 +5,17 @@
   "files": [
     "app"
   ],
-  "homepage": "https://bitbucket.org/knegusen/generator-wallaby-webpack-react",
-  "bugs": "https://bitbucket.org/knegusen/generator-wallaby-webpack-react/issues",
+  "homepage": "https://github.com/knegusen/generator-wallaby-webpack-react",
+  "bugs": "https://github.com/knegusen/generator-wallaby-webpack-react",
   "author": {
     "name": "Dennis Axelsson",
     "email": "knegusen@gmail.com",
-    "url": "https://bitbucket.org/knegusen/"
+    "url": "https://github.com/knegusen"
   },
   "main": "app/index.js",
   "repository": {
     "type": "git",
-    "url": "https://knegusen@bitbucket.org/knegusen/generator-wallaby-webpack-react.git"
+    "url": "https://github.com/knegusen/generator-wallaby-webpack-react.git"
   },
   "keywords": [
     "yeoman-generator",
