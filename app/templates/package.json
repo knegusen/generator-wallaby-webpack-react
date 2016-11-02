@@ -39,8 +39,8 @@
     "build:webpack": "NODE_ENV=production webpack --config webpack.config.prod.js",
     "build": "npm run clean && npm run build:webpack",
     "start": "node devServer.js",
-    "lint": "eslint src*/**/*",
-    "lint-fix": "eslint src*/**/* --fix"
+    "lint": "eslint \"src/**/*.js*\"",
+    "lint-fix": "eslint \"src/**/*.js*\" --fix"
   },
   "dependencies": {
     "react": "^15.3.0",
