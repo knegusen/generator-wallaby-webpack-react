@@ -1,7 +1,7 @@
 {
   "name": "generator-wallaby-webpack-react",
-  "version": "0.2.0",
-  "description": "Yeoman generator for wallabyjs, webpack, react, hot reloading, karma and babel.",
+  "version": "0.2.1",
+  "description": "Yeoman generator for wallabyjs, webpack, react, hot reloading, karma/jest and babel.",
   "files": [
     "app"
   ],
@@ -22,6 +22,7 @@
     "wallaby",
     "wallabyjs",
     "karma",
+    "jest",
     "jasmine",
     "webpack",
     "react",
