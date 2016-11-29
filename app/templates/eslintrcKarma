@@ -10,6 +10,15 @@
   },
   "parser": "babel-eslint",
   "rules": {
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*Spec.js*"
+        ]
+      }
+    ],
+    "react/jsx-space-before-closing": 0,
     //jasmine
     "jasmine/no-disabled-tests": 0,
     "jasmine/no-spec-dupes": [

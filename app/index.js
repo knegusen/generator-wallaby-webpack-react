@@ -24,8 +24,8 @@ module.exports = generators.Base.extend({
             },
             {
                 type: 'input',
-                name: 'useKarma',
-                message: 'Do you want to be able to run your test using node and karma? (y/n)',
+                name: 'useJest',
+                message: 'Do you want to run your test using jest over karma? (y/n)',
                 default: 'y'
             }], function (answers) {
             this.answers = answers;
@@ -40,7 +40,11 @@ module.exports = generators.Base.extend({
 
     copyFiles: function () {
         this._createPackageJson();
-        this._createWallabyJS();
+        if (this._useJest()){
+          this._createWallabyJestJS();
+        } else {
+          this._createWallabyKarmaJS();
+        }
         this._createDevServerJS();
         this._createWebpackConfig();
         this._createESLintRC();
@@ -67,6 +71,9 @@ module.exports = generators.Base.extend({
             this._copyToRoot('karma-files.js');
             this._copyToRoot('webpack.config.karma.js');
         }
+        if (this._useJest()) {
+            this.copy('babelrc', '.babelrc');
+        }
     },
 
     install: function () {
@@ -81,7 +88,11 @@ module.exports = generators.Base.extend({
     },
 
     _createESLintRC: function () {
-        this.copy('eslintrc', '.eslintrc');
+        if(this._useJest()){
+            this.copy('eslintrcJest', '.eslintrc');
+        } else {
+            this.copy('eslintrcKarma', '.eslintrc');
+        }
     },
 
     _createGitignore: function () {
@@ -112,8 +123,12 @@ module.exports = generators.Base.extend({
         this._copyToRoot('webpack.config.prod.js');
     },
 
-    _createWallabyJS: function () {
-        this._copyToRoot('wallaby.js');
+    _createWallabyKarmaJS: function () {
+      this.copy('wallabyKarma.js', 'wallaby.js');
+    },
+
+    _createWallabyJestJS: function () {
+      this.copy('wallabyJest.js', 'wallaby.js');
     },
 
     _createDevServerJS: function () {
@@ -130,14 +145,14 @@ module.exports = generators.Base.extend({
     },
 
     _createPackageJson: function () {
-        if (this._useKarma()) {
-            this.template('packageWithKarma.json', 'package.json', {
-                packageName: 'packageName'
-            });
+        if (this._useJest()) {
+          this.template('packageWithJest.json', 'package.json', {
+            packageName: 'packageName'
+          });
         } else {
-            this.template('package.json', 'package.json', {
-                packageName: 'packageName'
-            });
+          this.template('packageWithKarma.json', 'package.json', {
+            packageName: 'packageName'
+          });
         }
     },
 
@@ -182,6 +197,10 @@ module.exports = generators.Base.extend({
     },
 
     _useKarma: function () {
-        return this.answers.useKarma == 'y';
+        return !this._useJest();
+    },
+
+    _useJest: function () {
+        return this.answers.useJest == 'y';
     }
 });
