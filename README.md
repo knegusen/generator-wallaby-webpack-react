@@ -30,7 +30,7 @@ Open your browser and go to http://localhost:3000
 
 ### Testing
 
-You can test both using npm (karma) and wallabyJS. 
+You can test both using npm (jest) and wallabyJS. 
 
 #### Using node
 
