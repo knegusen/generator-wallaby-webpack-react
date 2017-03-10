@@ -21,12 +21,6 @@ module.exports = generators.Base.extend({
                 name: 'useGit',
                 message: 'Do you want to initialize git repo? (y/n)',
                 default: 'y'
-            },
-            {
-                type: 'input',
-                name: 'useJest',
-                message: 'Do you want to run your test using jest over karma? (y/n)',
-                default: 'y'
             }], function (answers) {
             this.answers = answers;
             done();
@@ -40,11 +34,7 @@ module.exports = generators.Base.extend({
 
     copyFiles: function () {
         this._createPackageJson();
-        if (this._useJest()){
-          this._createWallabyJestJS();
-        } else {
-          this._createWallabyKarmaJS();
-        }
+        this._createWallabyJS();
         this._createDevServerJS();
         this._createWebpackConfig();
         this._createESLintRC();
@@ -65,17 +55,6 @@ module.exports = generators.Base.extend({
         this._copyReactTestFile('ExampleStateComponentSpec.jsx');
     },
 
-    karmaFiles: function () {
-        if (this._useKarma()) {
-            this._copyToRoot('karma-conf.js');
-            this._copyToRoot('karma-files.js');
-            this._copyToRoot('webpack.config.karma.js');
-        }
-        if (this._useJest()) {
-            this.copy('babelrc', '.babelrc');
-        }
-    },
-
     install: function () {
         if (!this.options.skipInstall) {
             this.log('\nRunning npm install\n');
@@ -88,11 +67,7 @@ module.exports = generators.Base.extend({
     },
 
     _createESLintRC: function () {
-        if(this._useJest()){
-            this.copy('eslintrcJest', '.eslintrc');
-        } else {
-            this.copy('eslintrcKarma', '.eslintrc');
-        }
+      this.copy('eslintrc', '.eslintrc');
     },
 
     _createGitignore: function () {
@@ -121,14 +96,11 @@ module.exports = generators.Base.extend({
     _createWebpackConfig: function () {
         this._copyToRoot('webpack.config.dev.js');
         this._copyToRoot('webpack.config.prod.js');
+        this.copy('babelrc', '.babelrc');
     },
 
-    _createWallabyKarmaJS: function () {
-      this.copy('wallabyKarma.js', 'wallaby.js');
-    },
-
-    _createWallabyJestJS: function () {
-      this.copy('wallabyJest.js', 'wallaby.js');
+    _createWallabyJS: function () {
+      this.copy('wallaby.js', 'wallaby.js');
     },
 
     _createDevServerJS: function () {
@@ -145,15 +117,9 @@ module.exports = generators.Base.extend({
     },
 
     _createPackageJson: function () {
-        if (this._useJest()) {
-          this.template('packageWithJest.json', 'package.json', {
-            packageName: 'packageName'
-          });
-        } else {
-          this.template('packageWithKarma.json', 'package.json', {
-            packageName: 'packageName'
-          });
-        }
+      this.template('package.json', 'package.json', {
+        packageName: 'packageName'
+      });
     },
 
     _createSrcFolder: function () {
@@ -194,13 +160,5 @@ module.exports = generators.Base.extend({
         } else {
 
         }
-    },
-
-    _useKarma: function () {
-        return !this._useJest();
-    },
-
-    _useJest: function () {
-        return this.answers.useJest == 'y';
     }
 });

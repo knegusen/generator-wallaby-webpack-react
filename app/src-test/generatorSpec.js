@@ -67,10 +67,9 @@ describe("generator", function () {
                 [packageJSonFile, /eslint-plugin-react/],
                 [packageJSonFile, /eslint-plugin-import/],
                 [packageJSonFile, /eslint-plugin-jsx-a11y/],
-                [packageJSonFile, /eslint-plugin-jasmine/],
                 [packageJSonFile, /eslint-config-airbnb/],
                 [packageJSonFile, /express/],
-                [packageJSonFile, /json-loader/],
+                [packageJSonFile, /jest/],
                 [packageJSonFile, /npm-check-updates/],
                 [packageJSonFile, /react-addons-test-utils/],
                 [packageJSonFile, /react-transform-catch-errors/],
@@ -120,7 +119,7 @@ describe("generator", function () {
             assert.file('wallaby.js');
         });
 
-        //TODO: Add tests for wallabyKarma.js file
+        //TODO: Add tests for wallaby.js file
     });
 
     describe('test', function () {
@@ -215,30 +214,10 @@ describe("generator", function () {
         //TODO: Describe .eslintrc
     });
 
-    describe("karma", function () {
-        it("creates creates karma config files", function () {
-            assert.file('karma-conf.js');
-            assert.file('karma-files.js');
-            assert.file('webpack.config.karma.js');
-
-            //TODO: Describe files.
-        });
-
-        it('uses package.json file with karma dependencies', function () {
-            var packageJSonFile = 'package.json';
-            assert.fileContent([
-                [packageJSonFile, /jasmine-core/],
-                [packageJSonFile, /karma/],
-                [packageJSonFile, /karma-jasmine/],
-                [packageJSonFile, /karma-phantomjs-launcher/],
-                [packageJSonFile, /karma-sourcemap-loader/],
-                [packageJSonFile, /karma-webpack/]
-            ]);
-        });
-
+    describe("jest", function () {
         it('adds npm test task', function () {
-            var packageJSonFile = 'package.json';
-            assertNPMTask("test", "karma start karma-conf.js");
+            assertNPMTask("test", "jest");
+            assertNPMTask("test:update", "jest -u");
         });
     });
 
