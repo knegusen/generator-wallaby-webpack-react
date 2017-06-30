@@ -76,7 +76,6 @@ describe("generator", function () {
                 [packageJSonFile, /react-transform-hmr/],
                 [packageJSonFile, /redbox-react/],
                 [packageJSonFile, /rimraf/],
-                [packageJSonFile, /wallaby-webpack/],
                 [packageJSonFile, /webpack/],
                 [packageJSonFile, /webpack-dev-middleware/],
                 [packageJSonFile, /webpack-hot-middleware/],
