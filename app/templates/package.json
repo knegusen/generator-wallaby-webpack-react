@@ -1,5 +1,5 @@
 {
-  "name": "<%= packageName %>",
+  "name": "packageName",
   "version": "0.1.0",
   "description": "",
   "devDependencies": {
@@ -13,11 +13,11 @@
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-0": "^6.5.0",
     "copy-webpack-plugin": "^4.0.1",
-    "eslint": "^4.1.0",
+    "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.0",
-    "eslint-plugin-import": "^2.0.1",
-    "eslint-plugin-jsx-a11y": "^6.0.0",
-    "eslint-plugin-react": "^7.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^5.0.0",
+    "eslint-plugin-react": "^7.0.1",
     "express": "^4.14.0",
     "jest": "^20.0.0",
     "npm-check-updates": "^2.8.0",
